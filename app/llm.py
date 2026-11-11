@@ -40,7 +40,9 @@ def complete(messages: list[dict]) -> tuple[str, int, int]:
             temperature=settings.temperature,
             max_tokens=settings.max_output_tokens,
         )
-    except openai.RateLimitError:
+    except openai.RateLimitError as err:
+        if getattr(err, "code", None) in ("insufficient_quota", "credit_balance_exhausted"):
+            raise ChatError(503, "The assistant is temporarily unavailable. Please contact CMTI at cmtioffice@cmti.co.in.")
         raise ChatError(429, "I'm receiving too many requests right now. Please wait a few seconds and try again.")
     except openai.APITimeoutError:
         raise ChatError(504, "The reply took too long. Please try again in a moment.")

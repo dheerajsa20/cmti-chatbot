@@ -7,7 +7,9 @@ A row passes when the reply contains at least one of its expected keywords (sepa
 Queries containing | are multi-turn: earlier parts are sent first in the same session (memory tests).
 """
 import csv
+import os
 import sys
+import time
 import uuid
 from pathlib import Path
 
@@ -16,12 +18,15 @@ from app.llm import ChatError, complete
 from app.prompt import build_messages
 
 CSV = Path(__file__).with_name("test_set.csv")
+# Pause between API calls, for free tiers with a requests-per-minute limit (e.g. TEST_DELAY_SECONDS=5).
+DELAY = float(os.getenv("TEST_DELAY_SECONDS", "0"))
 
 
 def ask(turns: list[str]) -> tuple[str, int]:
     history: list[dict] = []
     reply, latency = "", 0
     for turn in turns:
+        time.sleep(DELAY)
         reply, latency, _ = complete(build_messages(history, turn))
         history += [{"role": "user", "content": turn}, {"role": "bot", "content": reply}]
     return reply, latency
