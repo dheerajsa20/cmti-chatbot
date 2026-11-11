@@ -26,7 +26,7 @@
   const root = el('div', 'cmti-chat');
   root.innerHTML = `
     <button class="cc-launch" type="button" aria-expanded="false" aria-controls="cc-panel">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5Z"/></svg><span>Ask CMTI</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5Z"/></svg><span>Ask Neo</span>
     </button>
     <section class="cc-panel" id="cc-panel" role="dialog" aria-label="CMTI help desk chat" hidden>
       <header class="cc-head">
