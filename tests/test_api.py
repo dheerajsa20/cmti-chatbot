@@ -120,5 +120,5 @@ def test_openai_errors_become_clear_messages(monkeypatch, exc, status, words):
 
 def test_widget_and_chat_page_are_served(client):
     assert client.get("/").status_code == 200
-    assert "Mitra" in client.get("/widget.js").text
+    assert "Neo" in client.get("/widget.js").text
     assert client.get("/widget.css").status_code == 200

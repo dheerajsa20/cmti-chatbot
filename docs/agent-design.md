@@ -1,4 +1,4 @@
-# Mitra as an intelligent agent
+# Neo as an intelligent agent
 
 ## PEAS description
 | | |
