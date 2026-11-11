@@ -33,6 +33,7 @@
 .cmti-chat .cc-typing .cc-bubble { display: inline-flex; gap: 4px; }
 .cmti-chat .cc-typing span { width: 7px; height: 7px; border-radius: 50%; background: #8796a6; animation: cc-dot 1.2s infinite ease-in-out; }
 .cmti-chat .cc-typing span:nth-child(2) { animation-delay: .15s; } .cmti-chat .cc-typing span:nth-child(3) { animation-delay: .3s; }
+.cmti-chat .cc-typing .cc-bubble { align-items: center; flex-wrap: wrap; } .cmti-chat .cc-typing em { margin-left: 6px; font-size: .8125rem; color: #55657a; }
 @keyframes cc-dot { 0%, 80%, 100% { opacity: .3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
 @media (prefers-reduced-motion: reduce) { .cmti-chat .cc-typing span { animation: none; } }
 .cmti-chat .cc-form { display: flex; align-items: flex-end; gap: 8px; padding: 10px; border-top: 1px solid var(--cc-line); background: #fff; }

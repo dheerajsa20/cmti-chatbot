@@ -13,8 +13,12 @@
 
   const css = document.createElement('link');
   css.rel = 'stylesheet';
-  css.href = API + '/widget.css';
+  // widget.css sits next to widget.js, so a site can host both files itself and still use the backend in data-api.
+  css.href = script?.src ? new URL('widget.css', script.src).href : API + '/widget.css';
   document.head.append(css);
+
+  // The free server sleeps when idle; start waking it now so the first reply is faster.
+  fetch(API + '/api/health').catch(() => {});
 
   const el = (tag, cls, text) => {
     const node = document.createElement(tag);
@@ -131,7 +135,11 @@
     typing.querySelector('.cc-bubble').innerHTML = '<span></span><span></span><span></span>';
     typing.setAttribute('aria-label', 'Neo is typing');
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 30000);
+    // A sleeping free server can take up to a minute to wake: wait 75 s, and say so after 6 s.
+    const timer = setTimeout(() => controller.abort(), 75000);
+    const wakeNote = setTimeout(() => {
+      typing.querySelector('.cc-bubble').innerHTML = '<span></span><span></span><span></span> <em>Neo is waking up, this can take up to a minute…</em>';
+    }, 6000);
     try {
       const res = await fetch(API + '/api/chat', {
         method: 'POST',
@@ -151,6 +159,7 @@
         : "I can't reach the CMTI assistant right now. Please check your connection, or contact cmtioffice@cmti.co.in.");
     } finally {
       clearTimeout(timer);
+      clearTimeout(wakeNote);
       sendBtn.disabled = false;
       input.focus();
     }
