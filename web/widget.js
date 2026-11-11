@@ -4,7 +4,7 @@
    Optional attributes on that script tag:
      data-api="https://YOUR-BACKEND"   backend address (defaults to where widget.js was loaded from)
      data-open="true"                  open the chat panel immediately
-   The browser only talks to our backend; the OpenAI key never reaches it. */
+   The browser only talks to our backend; the API key never reaches it. */
 (() => {
   const script = document.currentScript;
   const API = (script?.dataset.api || new URL(script?.src || location.href).origin).replace(/\/$/, '');
@@ -34,7 +34,7 @@
         <button class="cc-new" type="button" title="Start a new chat">New chat</button>
         <button class="cc-close" type="button" aria-label="Close chat">×</button>
       </header>
-      <p class="cc-notice">AI assistant. Your messages are sent to OpenAI to generate replies. Please don't share personal details such as your name, phone number or USN.</p>
+      <p class="cc-notice">AI assistant. Your messages are sent to an external AI service (Google Gemini) to generate replies. Please don't share personal details such as your name, phone number or USN.</p>
       <div class="cc-log" role="log" aria-live="polite"></div>
       <form class="cc-form">
         <label class="cc-sr" for="cc-input">Your question</label>

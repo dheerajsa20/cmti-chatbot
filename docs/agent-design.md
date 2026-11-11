@@ -4,7 +4,7 @@
 | | |
 |---|---|
 | **Performance measure** | Accurate answers grounded in the knowledge base; correct refusals for out-of-scope requests; "I don't know" instead of invented facts; replies under 5 seconds; low token cost; positive user feedback (thumbs up) |
-| **Environment** | Website visitors (students, graduates, companies, colleges) asking questions in a chat window; CMTI's knowledge file; the OpenAI model; the SQLite log |
+| **Environment** | Website visitors (students, graduates, companies, colleges) asking questions in a chat window; CMTI's knowledge file; the language model (Gemini, called through the OpenAI SDK); the SQLite log |
 | **Actuators** | Text replies in the chat window; polite refusals; referral to CMTI's phone and email; log entries |
 | **Sensors** | The user's typed message; the stored conversation history of the session; the knowledge file |
 
@@ -32,7 +32,7 @@ question, admit it doesn't know and refer to the office, or refuse with a redire
 ## Ethical, legal and societal issues (CO3) and safeguards
 | Issue | Safeguard in this bot |
 |---|---|
-| Privacy | No personal data asked for; notice that messages go to OpenAI; emails, phones and USNs masked in logs; no names stored |
+| Privacy | No personal data asked for; notice that messages go to the AI provider (Google Gemini); emails, phones and USNs masked in logs; no names stored |
 | Invented answers (hallucination) | Answers only from the knowledge file; explicit "I don't have that information" rule; fees and dates omitted on purpose |
 | False promises | Never promises jobs, placements or salaries |
 | Misuse | Out-of-scope refusal (e.g. "write my assignment"); prompt-injection resistance rule |
