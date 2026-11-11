@@ -92,6 +92,8 @@ Render's free plan sleeps after inactivity; the first message after a pause can 
 - No personal data is requested. The widget shows a notice that messages are sent to OpenAI, and email addresses,
   phone numbers and USNs are masked before messages are logged.
 - Low-cost model (`gpt-4o-mini` by default, changeable in `.env`); token usage is stored per reply.
+- `OPENAI_BASE_URL` in `.env` can point the same code at another OpenAI-compatible provider (see `.env.example`),
+  only if the faculty has approved a non-OpenAI provider.
 - The whole knowledge base is sent with every message (no RAG). This is simple and fine for a few pages, but cost
   grows with the knowledge size.
 - The bot can still make mistakes or phrase facts loosely; the knowledge file is the source of truth.

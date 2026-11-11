@@ -25,7 +25,7 @@ def _get_client() -> OpenAI:
         raise ChatError(503, "The assistant is not configured yet. Please contact CMTI at cmtioffice@cmti.co.in.")
     if _client is None:
         # max_retries=1 keeps most replies under the 5-second target while surviving one network blip.
-        _client = OpenAI(api_key=settings.openai_api_key, timeout=settings.request_timeout_s, max_retries=1)
+        _client = OpenAI(api_key=settings.openai_api_key, base_url=settings.openai_base_url or None, timeout=settings.request_timeout_s, max_retries=1)
     return _client
 
 

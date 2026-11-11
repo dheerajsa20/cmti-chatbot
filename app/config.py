@@ -16,6 +16,8 @@ def _list(name: str, default: str) -> list[str]:
 @dataclass(frozen=True)
 class Settings:
     openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
+    # Empty means OpenAI itself. Any OpenAI-compatible endpoint also works (e.g. Gemini or Groq), if permitted.
+    openai_base_url: str = os.getenv("OPENAI_BASE_URL", "")
     # A low-cost model tier, as the brief requires. Change it in .env without touching code.
     model: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     temperature: float = float(os.getenv("OPENAI_TEMPERATURE", "0.2"))
