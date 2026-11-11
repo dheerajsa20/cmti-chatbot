@@ -43,7 +43,7 @@
 .cmti-chat .cc-form button:disabled { opacity: .5; cursor: wait; }
 .cmti-chat :focus-visible { outline: 3px solid var(--cc-amber); outline-offset: 2px; }
 @media (max-width: 600px) {
-  .cmti-chat { left: 12px; right: 12px; bottom: 84px; }
+  .cmti-chat { left: 12px; bottom: 84px; }
   .cmti-chat .cc-launch { min-height: 48px; padding: 10px 16px; }
   .cmti-chat.is-open { left: 0; right: 0; bottom: 0; top: 0; }
   .cmti-chat .cc-panel { width: 100%; height: 100%; border-radius: 0; }
