@@ -1,0 +1,10 @@
+# Secrets: the API key lives only in .env (or the hosting platform's secret settings)
+.env
+# Local data and logs
+data/
+*.db
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
