@@ -1,7 +1,7 @@
 # CMTI Help Desk Chatbot
 
 A customized domain chatbot for **CMTI (Construction Management Training Institute)**, built with the OpenAI API
-for the BCS515B Artificial Intelligence project (Phase 1). The assistant, **Aakruti**, answers questions about CMTI's
+for the BCS515B Artificial Intelligence project (Phase 1). The assistant, **Mitra**, answers questions about CMTI's
 courses, corporate training, college MoUs, e-learning and contacts. It answers only from CMTI's own knowledge,
 refuses out-of-scope requests and says "I don't have that information" instead of guessing.
 
@@ -20,7 +20,7 @@ All four live in `knowledge/system_prompt.md`; the knowledge itself is in `knowl
 
 | Layer | Where | Summary |
 |---|---|---|
-| 1. Persona | system_prompt.md | "Aakruti", CMTI's friendly help-desk assistant; short, polite answers |
+| 1. Persona | system_prompt.md | "Mitra", CMTI's friendly help-desk assistant; short, polite answers |
 | 2. Custom knowledge | knowledge.md, inserted at `{knowledge}` | Courses, corporate programmes, MoUs, e-learning, team, awards, contacts |
 | 3. Scope control | system_prompt.md | Only CMTI topics; declines coding, homework, politics and similar, then says what it can help with |
 | 4. Safety and honesty | system_prompt.md | Says when it doesn't know; never invents fees or dates; no job promises; no personal data; resists prompt injection |

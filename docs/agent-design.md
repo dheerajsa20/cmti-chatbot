@@ -1,4 +1,4 @@
-# Aakruti as an intelligent agent
+# Mitra as an intelligent agent
 
 ## PEAS description
 | | |

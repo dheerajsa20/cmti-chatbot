@@ -30,7 +30,7 @@
     </button>
     <section class="cc-panel" id="cc-panel" role="dialog" aria-label="CMTI help desk chat" hidden>
       <header class="cc-head">
-        <div><strong>Aakruti</strong><span>CMTI help desk assistant</span></div>
+        <div><strong>Mitra</strong><span>CMTI help desk assistant</span></div>
         <button class="cc-new" type="button" title="Start a new chat">New chat</button>
         <button class="cc-close" type="button" aria-label="Close chat">×</button>
       </header>
@@ -57,7 +57,7 @@
   try { sessionId = localStorage.getItem(STORE_KEY); } catch (_) { /* storage blocked */ }
   const saveSession = (id) => { sessionId = id; try { localStorage.setItem(STORE_KEY, id); } catch (_) {} };
 
-  const WELCOME = "Hello! I'm Aakruti, CMTI's help-desk assistant. I can answer questions about our certified courses (CACM and IDM), corporate training, college MoUs, e-learning and webinars, and how to contact CMTI. How can I help you?";
+  const WELCOME = "Hello! I'm Mitra, CMTI's help-desk assistant. I can answer questions about our certified courses (CACM and IDM), corporate training, college MoUs, e-learning and webinars, and how to contact CMTI. How can I help you?";
 
   function addBubble(role, text, messageId) {
     const row = el('div', 'cc-msg cc-' + role);
@@ -129,7 +129,7 @@
     const typing = addBubble('bot', '');
     typing.classList.add('cc-typing');
     typing.querySelector('.cc-bubble').innerHTML = '<span></span><span></span><span></span>';
-    typing.setAttribute('aria-label', 'Aakruti is typing');
+    typing.setAttribute('aria-label', 'Mitra is typing');
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 30000);
     try {
