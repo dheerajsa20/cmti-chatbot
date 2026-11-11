@@ -26,6 +26,11 @@
 .cmti-chat .cc-bot .cc-bubble { background: var(--cc-bg); border: 1px solid var(--cc-line); border-bottom-left-radius: 4px; }
 .cmti-chat .cc-user { align-self: flex-end; }
 .cmti-chat .cc-user .cc-bubble { background: var(--cc-blue); color: #fff; border-bottom-right-radius: 4px; }
+.cmti-chat .cc-rich { white-space: normal; }
+.cmti-chat .cc-rich p { margin: 0; }
+.cmti-chat .cc-rich > * + * { margin-top: 6px; }
+.cmti-chat .cc-rich ul, .cmti-chat .cc-rich ol { margin-bottom: 0; padding-left: 20px; }
+.cmti-chat .cc-rich li + li { margin-top: 3px; }
 .cmti-chat .cc-error .cc-bubble { background: #fff4f3; border: 1px solid #f3c2bd; color: #8a1c12; }
 .cmti-chat .cc-fb { display: flex; gap: 4px; margin-top: 4px; }
 .cmti-chat .cc-fb button { padding: 2px 6px; border: 1px solid transparent; border-radius: 6px; background: transparent; font-size: .85rem; cursor: pointer; opacity: .6; }

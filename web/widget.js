@@ -63,9 +63,41 @@
 
   const WELCOME = "Hello! I'm Neo, CMTI's help-desk assistant. I can answer questions about our certified courses (CACM and IDM), corporate training, college MoUs, e-learning and webinars, and how to contact CMTI. How can I help you?";
 
+  // The model replies in light Markdown (**bold**, "* " bullets, "1. " lists). Build safe DOM nodes for it:
+  // text only ever goes into text nodes, never innerHTML, so a reply can't inject HTML.
+  function addInline(parent, text) {
+    for (const part of text.split(/(\*\*[^*]+\*\*)/g)) {
+      if (/^\*\*[^*]+\*\*$/.test(part)) parent.append(el('strong', '', part.slice(2, -2)));
+      else if (part) parent.append(document.createTextNode(part.replace(/(^|\s)\*(\S(?:[^*]*\S)?)\*(?=$|[\s.,;:!?)])/g, '$1$2')));
+    }
+  }
+  function richBubble(text) {
+    const box = el('div', 'cc-bubble cc-rich');
+    let list = null;
+    for (const raw of text.split('\n')) {
+      const line = raw.trim();
+      const bullet = line.match(/^[*\-\u2022]\s+(.*)$/);
+      const num = line.match(/^\d+[.)]\s+(.*)$/);
+      if (bullet || num) {
+        const kind = bullet ? 'UL' : 'OL';
+        if (!list || list.tagName !== kind) { list = el(kind.toLowerCase()); box.append(list); }
+        const li = el('li');
+        addInline(li, (bullet || num)[1]);
+        list.append(li);
+      } else {
+        list = null;
+        if (!line) continue;
+        const para = el('p');
+        addInline(para, line.replace(/^#+\s*/, ''));
+        box.append(para);
+      }
+    }
+    return box;
+  }
+
   function addBubble(role, text, messageId) {
     const row = el('div', 'cc-msg cc-' + role);
-    row.append(el('p', 'cc-bubble', text));
+    row.append(role === 'bot' && text ? richBubble(text) : el('p', 'cc-bubble', text));
     if (role === 'bot' && messageId) {
       const fb = el('div', 'cc-fb');
       for (const [rating, label, symbol] of [[1, 'Helpful', '👍'], [-1, 'Not helpful', '👎']]) {
